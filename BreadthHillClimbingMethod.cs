@@ -46,21 +46,6 @@ public static class BreadthHillClimbingMethod
 		return (bestCoding, bestFitness);
 	}
 
-	private static BinaryCoding FindBestNeighbour(SearchDomain domain, Neighbourhood neighbourhood)
-	{
-		var bestNeighbour = neighbourhood.GetSequentially().First();
-		var bestNeighbourFitness = domain.CalculateFitness(bestNeighbour);
-
-		foreach (var neighbour in neighbourhood.GetSequentially())
-		{
-			var fitness = domain.CalculateFitness(neighbour);
-
-			if (fitness <= bestNeighbourFitness) continue;
-
-			bestNeighbour = neighbour;
-			bestNeighbourFitness = fitness;
-		}
-
-		return bestNeighbour;
-	}
+	private static BinaryCoding FindBestNeighbour(SearchDomain domain, Neighbourhood neighbourhood) =>
+		neighbourhood.GetSequentially().MaxBy(domain.CalculateFitness) ?? throw new InvalidOperationException();
 }
