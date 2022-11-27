@@ -24,9 +24,4 @@ public sealed class Neighbourhood
 			yield return GetNthNeighbour(i);
 		}
 	}
-
-	public IEnumerable<BinaryCoding> GetRandomly()
-	{
-		return GetSequentially().OrderBy(_ => Utilities.GetRandom());
-	}
 }

@@ -13,12 +13,6 @@ public record BinaryCoding
 		Length = length ?? Convert.ToInt32(Math.Ceiling(Math.Log(value, 2)));
 	}
 
-	// public BinaryCoding(string binary, int? length)
-	// {
-	// 	Value = Convert.ToInt32(binary, 2);
-	// 	Length = length ?? binary.Length;
-	// }
-
 	public override string ToString()
 	{
 		return Convert.ToString(Value, 2).PadLeft(Length, '0');
